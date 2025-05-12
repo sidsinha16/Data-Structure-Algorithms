@@ -3,6 +3,10 @@ class Solution {
         int l = 0;
         int r = nums.length-1;
         while(l<r){
+            
+            while(l<r && nums[r] == nums[r-1]){ r--; }
+            while(l<r && nums[l] == nums[l+1]){ l++; }
+
             int mid = l + (r-l)/2;
             if(nums[mid] > nums[r]){
                 l = mid+1;
