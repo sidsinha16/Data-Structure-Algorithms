@@ -1,4 +1,11 @@
 class Solution {
+    // total sum of even number
+    // iterate as per quearies
+    // check value at idx is even then 
+    // Subtract TS from idx value before operation
+    // do operation -> change value as per queries
+    // add new value to TS and store it to new array
+    // if odd value, dnt do any opeartion
     public int[] sumEvenAfterQueries(int[] nums, int[][] queries) {
         int ts = 0;
 		int[] res = new int[queries.length]; 
