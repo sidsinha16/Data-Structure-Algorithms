@@ -1,18 +1,5 @@
 class Solution {
-    public char findKthCharacter(int k) {
-    StringBuilder word = new StringBuilder("a");
-
-    while (word.length() < k) {
-        StringBuilder next = new StringBuilder();
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            char nextChar = (char)((c - 'a' + 1) % 26 + 'a');
-            next.append(nextChar);
-        }
-        word.append(next);
+    public char kthCharacter(int k) {
+       return (char) ('a' + Integer.bitCount(k - 1)); 
     }
-
-    return word.charAt(k - 1);
-}
-
 }
