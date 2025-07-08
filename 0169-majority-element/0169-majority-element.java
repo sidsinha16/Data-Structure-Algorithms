@@ -1,6 +1,7 @@
 class Solution {
     public int majorityElement(int[] nums) {
         
+        //Boyer Moore Algo
         int n       = nums.length;
         int maj     = 0;
         int count   = 0;
