@@ -11,34 +11,31 @@
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
         
-        if(head == null) return null;
-        if(head.next == null || k == 0) {
-            return head;
-        }
-        
-        ListNode curr = head;
-        int len = 1;
+        if(head == null) return head;
+        if(k==0) return head;
 
-        while(curr !=null && curr.next != null){
-            curr = curr.next;
-            len++;
+        int length = 1;
+        ListNode tail = head;
+        while(tail.next != null){
+            tail = tail.next;
+            length++;
         }
 
-        curr.next = head;
-        k = k % len;
-        if (k == 0) {
-            curr.next = null; // break circular link
-            return head;
-        }
+        k = k%length;
+        if(k == 0 ){ return head; } // no rotation required
 
-        int stepsToNewTail = len - k;
+        // new Tail
         ListNode newTail = head;
-        while (stepsToNewTail-- > 1) {
+        int stepstoBreak = length-k-1;
+        for(int i=0; i<stepstoBreak;i++){
             newTail = newTail.next;
         }
+
+
+        //rotate
         ListNode newHead = newTail.next;
         newTail.next = null;
-        curr.next = head; // complete the rotation
+        tail.next = head;
 
         return newHead;
 
