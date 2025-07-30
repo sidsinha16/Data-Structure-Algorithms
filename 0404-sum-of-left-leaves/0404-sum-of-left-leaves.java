@@ -14,21 +14,24 @@
  * }
  */
 class Solution {
-    int sum = 0;
+    int ans = 0;
     public int sumOfLeftLeaves(TreeNode root) {
+        
         preorder(root);
-        return sum;
+        return ans;
     }
 
-    public void preorder(TreeNode root){
+    // root - left - right
+    void preorder(TreeNode root){
+
         if(root == null){
             return;
         }
+
         if(root.left != null && root.left.left == null && root.left.right == null){
-            sum = sum + root.left.val;
+            ans = ans + root.left.val;
         }
         preorder(root.left);
         preorder(root.right);
-     }
-
+    }
 }
