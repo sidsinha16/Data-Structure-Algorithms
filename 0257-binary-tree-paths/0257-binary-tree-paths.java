@@ -14,22 +14,24 @@
  * }
  */
 class Solution {
+    List<String> ans = new ArrayList<>();
     public List<String> binaryTreePaths(TreeNode root) {
-        List<String> list = new ArrayList<>();
-        func(root, "", list);
-        return list;
+        String str = "";
+        preorder(root, str);
+        return ans;
     }
 
-    void func(TreeNode root, String path, List<String> paths){
-        if( root != null){
-
-            path += Integer.toString(root.val);
-            if(root.left == null && root.right == null){
-                paths.add(path);
-                path += "->";
-            }
-            func(root.left, path + "->", paths);
-            func(root.right, path + "->", paths);
+    void preorder(TreeNode root, String str){
+        if(root == null){
+            return;
         }
+
+        str = str+""+root.val;
+        if(root.left == null && root.right == null){
+            ans.add(str);
+        }
+
+        preorder(root.left, str+"->");
+        preorder(root.right, str+"->");
     }
 }
